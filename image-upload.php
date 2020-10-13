@@ -1,7 +1,3 @@
-public function upload()
-    {
-        return view('upload');
-    }
 
     /*##
     Store function will gather the data from the "upload" view and store it to the database
