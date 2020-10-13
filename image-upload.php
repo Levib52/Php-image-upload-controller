@@ -11,9 +11,6 @@ public function upload()
     {
         // assure necessary data is input correctly
        $data = request()->validate([
-            'postTitle' => 'required',
-            'postDescription' => 'required',
-            'postTags' => 'required',
             'postImage.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg,',
             'thumbnail.*' => '',
         ]);
@@ -44,10 +41,6 @@ public function upload()
         
         //create the post with all the data
         auth()->user()->post()->create(array_merge([
-            'postTitle' => ucfirst($data['postTitle']),
-            'postDescription' => $data['postDescription'],
-            'postTags' => strtolower($data['postTags']),
-            'postImage' => json_encode($originalImageArray),
             'thumbnail' => json_encode($thumbnailArray),
         ]));
 
